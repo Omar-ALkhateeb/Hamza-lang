@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hamza Terminal</title>
+    <script src="lis.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/jcubic/jquery.terminal@devel/js/jquery.terminal.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/gh/jcubic/jquery.terminal@devel/css/jquery.terminal.min.css"
+        rel="stylesheet" />
+    <style type="text/css">
+        .terminal {
+            --color: rgba(0, 128, 0, 0.99);
+            --background: white;
+            --animation: terminal-bar;
+            height: 100vh;
+        }
+
+        .terminal,
+        span {
+            --size: 1.4;
+        }
+    </style>
+</head>
+
+<body>
+    <div id=term_demo></div>
+    <!-- <p id="hi">hi</p> -->
+</body>
+<script>
+    jQuery(function ($, undefined) {
+        $('#term_demo').terminal(function (command) {
+            if (command !== '') {
+
+                var result = eval(parse(command));
+                if (result != undefined) {
+                    this.echo(String(result));
+                }
+            }
+        }, {
+            greetings: 'The Hamza Lisp-like Interpreter',
+            name: 'js_demo',
+            // height: 200,
+            // width: 450,
+            prompt: 'همزه> '
+        });
+    });
+</script>
+
+</html>
